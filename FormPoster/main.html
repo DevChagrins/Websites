@@ -1,21 +1,38 @@
 <html>
-	<head></head>
-	<body>
-		<form method="post">
-			<fieldset>
-				<legend>Theme Card Info</legend>
-				Theme:<br/>
-				<input type="text" name="theme" value=""/>
-				<br/>
-				Type:<br/>
-				<select name="Type">
-					<option value="Object">Object</option>
-					<option value="Place">Place</option>
-					<option value="Setting">Setting</option>
-				</select>
-				<br/><br/>
-				<input type="submit" value="Submit"/>
-			</fieldset>
-		</form>
-	</body>
+<head></head>
+<body>
+	<form method="post">
+		<fieldset>
+            <legend>Theme Card Info</legend>
+            Theme:<br/>
+            <input type="text" name="theme" value=""/>
+            <br/>
+			Type:<br/>
+			<select name="Type">
+				<option value="Object">Object</option>
+				<option value="Place">Place</option>
+				<option value="Setting">Setting</option>
+                <option value="Other">Other</option>
+			</select>
+			<br/><br/>
+			<input type="submit" value="Submit"/>
+        </fieldset>
+    </form>
+</body>
+<?php
+    include("common/db.php");
+    
+    $sql = "SELECT * FROM Theme_Cards";
+    $result = mysql_query($sql);
+
+    $num_rows = mysql_num_rows($result);
+    
+    echo $num_rows;
+
+    $startNum = 0;
+    for($i = $startNum; $i < $num_rows; $i++)
+    {
+        echo $result[i];  
+    }
+?>
 </html>
